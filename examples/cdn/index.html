@@ -53,7 +53,7 @@
         $('#run').click(function(){
             $('#frame').empty().append($('<iframe>', {srcdoc: editor.getValue()}));
         });
-        var m = location.search.match(/[?&]code=([^&]+)/);
+        var m = location.hash.match(/^#(.+)/);
         if (m)
         {
             $.get(m[1]+'.html', function(data){
