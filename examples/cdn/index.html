@@ -51,7 +51,10 @@
         var editor = CodeMirror.fromTextArea($('#editor')[0],
             {mode: 'htmlmixed', lineNumbers: true});
         $('#run').click(function(){
-            $('#frame').empty().append($('<iframe>', {srcdoc: editor.getValue()}));
+            var doc = $('<iframe>').appendTo($('#frame').empty())[0].contentDocument;
+            doc.open();
+            doc.write(editor.getValue());
+            doc.close();
         });
         var m = location.hash.match(/^#(.+)/);
         if (m)
