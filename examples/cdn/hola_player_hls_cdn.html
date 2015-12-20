@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//player.h-cdn.com/player_vjs5.js"></script>
+    <script src="//player.h-cdn.com/loader.js?customer=demo" async></script>
+</head>
+<body>
+  <div>HLS stream with Hola player and CDN</div>
+  <video class="video-js vjs-default-skin" poster="http://player.h-cdn.org/static/hls/bipbop/bipbopall.jpg" width="640" height="360" controls>
+    <source src="http://player.h-cdn.org/static/hls/bipbop/bipbopall.m3u8" type="application/x-mpegurl">
+  </video>
+  <script>
+    (function(){
+        window.hola_player(function(player){
+            player.init({}, function(){
+                if (window.hola_cdn)
+                    window.hola_cdn.init();
+                else
+                    window.hola_cdn_on_load = true;
+            });
+        });
+    })();
+  </script>
+</body>
+</html>
