@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//jwpsrv.com/library/5V3tOP97EeK2SxIxOUCPzg.js"></script>
+</head>
+<body>
+  <div>JWPlayer without Hola CDN</div>
+  <div id="video"></div>
+  <script>
+    (function(){
+        jwplayer('video').setup({
+            file: 'http://player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4',
+            image: 'http://player.h-cdn.org/static/mp4/tears_of_steel_1080p_MP4.jpg',
+            primary: 'flash',
+            width: 640,
+            height: 360
+        });
+    })();
+  </script>
+</body>
+</html>
