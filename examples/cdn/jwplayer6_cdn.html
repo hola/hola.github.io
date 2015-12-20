@@ -17,11 +17,10 @@
             width: 640,
             height: 360
         });
-        function init_hola(){ window.hola_cdn.init(); }
         if (window.hola_cdn)
-            init_hola();
+            window.hola_cdn.init();
         else
-            window.hola_cdn_on_load = init_hola;
+            window.hola_cdn_on_load = true;
     })();
   </script>
 </body>

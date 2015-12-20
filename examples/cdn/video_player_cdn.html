@@ -13,11 +13,10 @@
     (function(){
         window.hola_player(function(player){
             player.init({}, function(){
-                function init_hola(){ window.hola_cdn.init(); }
                 if (window.hola_cdn)
-                    init_hola();
+                    window.hola_cdn.init();
                 else
-                    window.hola_cdn_on_load = init_hola;
+                    window.hola_cdn_on_load = true;
             });
         });
     })();
