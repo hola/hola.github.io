@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//jwpsrv.com/library/5V3tOP97EeK2SxIxOUCPzg.js"></script>
+    <script src="//player.h-cdn.com/loader.js?customer=demo" async></script>
+</head>
+<body>
+  <div>JWPlayer with Hola CDN</div>
+  <div id="video"></div>
+  <script>
+    (function(){
+        jwplayer('video').setup({
+            file: 'http://player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4',
+            image: 'http://player.h-cdn.org/static/mp4/tears_of_steel_1080p_MP4.jpg',
+            swf: '//holacdn.com/player/jwplayer.flash.hls.swf',
+            primary: 'flash',
+            width: 640,
+            height: 360
+        });
+        function init_hola(){ window.hola_cdn.init(); }
+        if (window.hola_cdn)
+            init_hola();
+        else
+            window.hola_cdn_on_load = init_hola;
+    })();
+  </script>
+</body>
+</html>
