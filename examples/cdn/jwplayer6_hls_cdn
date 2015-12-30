@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//jwpsrv.com/library/5V3tOP97EeK2SxIxOUCPzg.js"></script>
+    <script src="//player.h-cdn.com/loader.js?customer=demo" async></script>
+</head>
+<body>
+  <div>JWPlayer with Hola CDN - playing HLS video</div>
+  <div id="video"></div>
+  <script>
+    (function(){
+        jwplayer('video').setup({
+            file: 'http://player.h-cdn.org/static/hls/cdn2/master.m3u8',
+            flashplayer: '//player.h-cdn.com/jwplayer.flash.hls.swf',
+            primary: 'flash',
+            width: 640,
+            height: 360
+        });
+        if (window.hola_cdn)
+            window.hola_cdn.init();
+        else
+            window.hola_cdn_on_load = true;
+    })();
+  </script>
+</body>
+</html>
