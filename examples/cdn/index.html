@@ -51,7 +51,7 @@
         var editor = CodeMirror.fromTextArea($('#editor')[0],
             {mode: 'htmlmixed', lineNumbers: true});
         $('#run').click(function(){
-            var doc = $('<iframe>').appendTo($('#frame').empty())[0].contentDocument;
+            var doc = $('<iframe>', {name: 'video preview'}).appendTo($('#frame').empty())[0].contentDocument;
             doc.open();
             doc.write(editor.getValue());
             doc.close();
