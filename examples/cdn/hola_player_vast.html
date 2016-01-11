@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//rawgit.com/hola/videojs-vast-vpaid/master/bin/videojs-vast-vpaid.css" rel="stylesheet">
+    <script type="text/javascript" src="//player.h-cdn.com/player_vjs5.js"></script>
+    <script src="//rawgit.com/hola/videojs-vast-vpaid/feature/videojs-v5/bin/swfobject.js"></script>
+    <script src="//rawgit.com/hola/videojs-vast-vpaid/feature/videojs-v5/bin/videojs-vast-vpaid.min.js"></script>
+</head>
+<body>
+    <video class="video-js vjs-default-skin" width="640" height="360" preload="none" controls>
+        <source src="http://player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4" type="video/mp4"></source>
+    </video>
+    <script>
+      window.hola_player(function(player){
+          player.init(function(vjs){
+              vjs.vastClient({
+                  playAdAlways: true,
+                  adTagUrl: 'https://pubads.g.doubleclick.net/...',
+                  adCancelTimeout: 5000,
+                  adsEnabled: true,
+                  autoResize: false,
+              });
+          });
+      });
+    </script>
+</body>
+</html>
