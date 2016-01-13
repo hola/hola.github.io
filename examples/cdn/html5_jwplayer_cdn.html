@@ -15,17 +15,14 @@ playerInstance.setup({
     file: "http://player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4",
     width: 640,
     height: 360,
-    });
-</script>
-    <script>
-    (function(){
+    }).onReady(function(){
         function init_hola(){
             window.hola_cdn.init({player_opts: {}}); }
         if (window.hola_cdn)
             init_hola();
         else
             window.hola_cdn_on_load = init_hola;
-    })();
-  </script>
+    });
+</script>
 </body>
 </html>
