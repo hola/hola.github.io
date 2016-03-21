@@ -13,7 +13,7 @@
     (function(){
         window.hola_player(function(player){
             player.init({}, function(){
-                if (window.hola_cdn)
+                if (window.hola_cdn && window.hola_cdn.init)
                     window.hola_cdn.init();
                 else
                     window.hola_cdn_on_load = true;
