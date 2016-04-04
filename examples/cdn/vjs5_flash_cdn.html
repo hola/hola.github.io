@@ -13,10 +13,6 @@
   <script>
     (function(){
         videojs(document.querySelector('video'), {techOrder: ['flash']});
-        if (window.hola_cdn)
-            window.hola_cdn.init();
-        else
-            window.hola_cdn_on_load = true;
     })();
   </script>
 </body>
