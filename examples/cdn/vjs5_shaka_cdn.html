@@ -1,0 +1,23 @@
+<html>
+<head>
+  <script src=//cdn.jsdelivr.net/videojs/5.9.0/video.js></script>
+  <link href=//cdn.jsdelivr.net/videojs/5.9.0/video-js.min.css rel=stylesheet />
+  <script src=//cdn.rawgit.com/MetaCDN/videojs-shaka-player/vjs5/src/videojs.shaka.dev.js></script>
+  <script src=//cdn.rawgit.com/hola/shaka-player/v1.6.x/shaka-player.compiled.js></script>
+  <script cross-origin=anonymous
+    src=//player.h-cdn.com/loader.js?customer=demo></script>
+</head>
+<body>
+  <div><h1>Videojs+Shaka/v1.6.x playing dash/mpd with Hola CDN</h1></div>
+  <video id=shaka-video class=video-js width=640 height=360 controls autoplay></video>
+  <script>
+    videojs(document.querySelector('video'), {
+        techOrder: ['shaka'],
+        sources: [{
+            src: 'http://makostore-hd.ctedgecdn.net/Makostore-Vod/_definst_/amlst:http/SHORT/CH22_NEWS/2016/01/forat_mishpat_vtr2_n20160109_v1/forat_mishpat_vtr2_n20160109_v1_,850,.mp4/manifest.mpd',
+            type: 'application/dash+xml'
+        }]
+    });
+  </script>
+</body>
+</html>
