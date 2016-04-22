@@ -1,0 +1,19 @@
+<html>
+<head>
+  <script src=//cdn.rawgit.com/hola/shaka-player/fb163194d2e5eaf955035158d678ea7bba99c3f1/shaka-player.compiled.js></script>
+</head>
+<body>
+  <div><h1>Shaka/v1.6.x playing dash/mpd without Hola CDN</h1></div>
+  <video id=shaka-video width=640 height=360 controls autoplay></video>
+  <script>
+    (function(){
+        var shaka_player =
+            new shaka.player.Player(document.querySelector('video'));
+        var estimator = new shaka.util.EWMABandwidthEstimator();
+        var manifest = 'http://makostore-hd.ctedgecdn.net/Makostore-Vod/_definst_/amlst:http/SHORT/CH22_NEWS/2016/01/forat_mishpat_vtr2_n20160109_v1/forat_mishpat_vtr2_n20160109_v1_,850,.mp4/manifest.mpd';
+        var source = new shaka.player.DashVideoSource(manifest, null, estimator);
+        shaka_player.load(source);
+    })();
+  </script>
+</body>
+</html>
