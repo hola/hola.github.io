@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Hola Player + HolaCDN + Preroll/Midroll/Postroll ads</title>
+    <title>Hola Player + HolaCDN + IMA ads</title>
     <link rel="stylesheet" href="//cdn.rawgit.com/videojs/videojs-contrib-ads/v3.3.12/src/videojs.ads.css" />
     <link rel="stylesheet" href="//cdn.rawgit.com/googleads/videojs-ima/0.4.0/src/videojs.ima.css" />
     <link rel="stylesheet" href="//cdn.rawgit.com/googleads/videojs-ima/0.4.0/examples/style.css" />
@@ -11,8 +11,6 @@
     <video id="video" preload="none" class="video-js vjs-default-skin" width="640" height="360" controls>
         <source src="//player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4">
     </video>
-
-
     <script src="//player.h-cdn.com/player_vjs5_10.js"></script>
     <script async crossorigin="anonymous" src="//player.h-cdn.com/loader.js?customer=demo" ></script>
     <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
@@ -24,14 +22,13 @@
             player: document.getElementById('video'),
             tech: "html5",
         }, function(vjs){
-            init_vast(vjs, function() {
-                console.log('VAST init done');
+            init_ima(vjs, function() {
+                console.log('IMA init done');
             });
         });
     });
-    function init_vast(vjs, callback){
+    function init_ima(vjs, callback){
         var player = vjs;
-
         var options = {
           id: 'video',
           adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&' +
@@ -40,9 +37,7 @@
               'cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&' +
               'vid=short_onecue&correlator='
         };
-
         player.ima(options);
-
         player.one('click', function() {
             player.ima.initializeAdDisplayContainer();
             player.ima.requestAds();
