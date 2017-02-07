@@ -1,48 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Hola Player + HolaCDN + IMA ads</title>
-    <link rel="stylesheet" href="//cdn.rawgit.com/videojs/videojs-contrib-ads/v3.3.12/src/videojs.ads.css" />
-    <link rel="stylesheet" href="//cdn.rawgit.com/googleads/videojs-ima/0.4.0/src/videojs.ima.css" />
-    <link rel="stylesheet" href="//cdn.rawgit.com/googleads/videojs-ima/0.4.0/examples/style.css" />
-<head>
+  <title>Hola Player + HolaCDN + IMA ads</title>
+  <script src="//player.h-cdn.com/player/{player_version}/hola_player.js?customer=demo"></script>
+  <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+</head>
 <body>
-    <video id="video" preload="none" class="video-js vjs-default-skin" width="640" height="360" controls>
-        <source src="//player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4">
-    </video>
-    <script src="//player.h-cdn.com/player_vjs5_10.js?customer=demo"></script>
-    <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-    <script src="//cdn.rawgit.com/videojs/videojs-contrib-ads/v3.3.12/src/videojs.ads.js"></script>
-    <script src="//cdn.rawgit.com/googleads/videojs-ima/0.4.0/src/videojs.ima.js"></script>
-    <script>
+  <video id="video" preload="none" class="video-js vjs-default-skin" width="640" height="360" controls>
+    <source src="//player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4">
+  </video>
+  <script>
     window.hola_player(function(player){
+        var ad = 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&' +
+           'iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&' +
+           'impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&' +
+           'cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&' +
+           'vid=short_onecue&correlator=';
         player.init({
             player: document.getElementById('video'),
-            tech: "html5",
-        }, function(vjs){
-            init_ima(vjs, function() {
-                console.log('IMA init done');
-            });
+            ads: {adTagUrl: ad},
         });
     });
-    function init_ima(vjs, callback){
-        var player = vjs;
-        var options = {
-          id: 'video',
-          adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&' +
-              'iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&' +
-              'impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&' +
-              'cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&' +
-              'vid=short_onecue&correlator='
-        };
-        player.ima(options);
-        player.one('click', function() {
-            player.ima.initializeAdDisplayContainer();
-            player.ima.requestAds();
-            player.play();
-        });
-    }
-    </script>
+  </script>
 </body>
-
+</html>
