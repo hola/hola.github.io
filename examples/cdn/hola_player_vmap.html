@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//player2.h-cdn.com/hola_player.js?customer=demo"></script>
+</head>
+<body>
+  <div><h1>Video tag with Hola Player - playing MP4 with HolaCDN and multiple ads</h1></div>
+  <video preload="none" class="video-js vjs-default-skin" width="640" height="360" controls>
+    <source src="http://player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4" type="video/mp4">
+  </video>
+  <script>
+    (function(){
+        var ad_num = 0;
+        var ad_str = '';
+        // time - valid values:
+        //   - 'start' or 'end' of the video
+        //   - time from the beginning of the video in hh:mm:ss.mmm format where .mmm is milliseconds
+        // type - 'linear', 'nonlinear', 'display'
+        // url - VAST tag url
+        function add_ad(time, type, url){
+            ad_num++;
+            ad_str += '<vmap:AdBreak timeOffset="'+time+'" breakType="'+type+'" breakId="roll-'+ad_num+'">'
+                +'<vmap:AdSource id="roll-'+ad_num+'-ad-1" allowMultipleAds="false" followRedirects="true">'
+                +'<vmap:AdTagURI templateType="vast3">'
+                +'<![CDATA[\n'+url+'\n]]>'
+                +'</vmap:AdTagURI>'
+                +'</vmap:AdSource>'
+                +'</vmap:AdBreak>';
+        }
+
+        add_ad('start', 'linear', 'https://pubads.g.doubleclick.net/gampad/ads?slotname=/124319096/external/ad_rule_samples&sz=640x480&ciu_szs=300x250&unviewed_position_start=1&output=xml_vast3&impl=s&env=vp&gdfp_req=1&ad_rule=0&vad_type=linear&vpos=preroll&pod=1&ppos=1&lip=true&min_ad_duration=0&max_ad_duration=30000&vrid=6256&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&url=https://developers.google.com/interactive-media-ads/docs/sdks/html5/tags%3Fhl%3Duk&video_doc_id=short_onecue&cmsid=496&kfa=0&tfcd=0');
+        add_ad('00:00:15.000', 'linear', 'https://pubads.g.doubleclick.net/gampad/ads?slotname=/124319096/external/ad_rule_samples&sz=640x480&ciu_szs=300x250&unviewed_position_start=1&output=xml_vast3&impl=s&env=vp&gdfp_req=1&ad_rule=0&cue=15000&vad_type=linear&vpos=midroll&pod=2&mridx=1&ppos=1&lip=true&min_ad_duration=0&max_ad_duration=30000&vrid=6256&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&url=https://developers.google.com/interactive-media-ads/docs/sdks/html5/tags%3Fhl%3Duk&video_doc_id=short_onecue&cmsid=496&kfa=0&tfcd=0');
+        add_ad('end', 'linear', 'https://pubads.g.doubleclick.net/gampad/ads?slotname=/124319096/external/ad_rule_samples&sz=640x480&ciu_szs=300x250&unviewed_position_start=1&output=xml_vast3&impl=s&env=vp&gdfp_req=1&ad_rule=0&vad_type=linear&vpos=postroll&pod=3&ppos=1&lip=true&min_ad_duration=0&max_ad_duration=30000&vrid=6256&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&url=https://developers.google.com/interactive-media-ads/docs/sdks/html5/tags%3Fhl%3Duk&video_doc_id=short_onecue&cmsid=496&kfa=0&tfcd=0');
+
+        window.hola_player({
+            ads: {
+                adsResponse: '<vmap:VMAP xmlns:vmap="http://www.iab.net/videosuite/vmap" version="1.0">'
+                    +ad_str
+                    +'</vmap:VMAP>',
+            }
+        });
+    })();
+  </script>
+</body>
+</html>
