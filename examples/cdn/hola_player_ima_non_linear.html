@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hola Player + HolaCDN + IMA ads</title>
+  <script src="//player2.h-cdn.com/hola_player.js?customer=demo"></script>
+</head>
+<body>
+  <video id="video" preload="none" class="video-js vjs-default-skin" width="640" height="360" controls>
+    <source src="//player.h-cdn.org/static/mp4/tears_of_steel_360p_MP4.mp4">
+  </video>
+  <script>
+    var ad = 'https://pubads.g.doubleclick.net/gampad/ads?sz=480x70&'+
+        'iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&'+
+        'gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&'+
+        'cust_params=deployment%3Ddevsite%26sample_ct%3Dnonlinear&correlator=';
+    window.hola_player({
+        player: '#video',
+        ads: {adTagUrl: ad},
+    });
+  </script>
+</body>
+</html>
