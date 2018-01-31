@@ -10,7 +10,7 @@
         var shaka_player =
             new shaka.player.Player(document.querySelector('video'));
         var estimator = new shaka.util.EWMABandwidthEstimator();
-        var manifest = '//player.h-cdn.org/static/dash/mako/manifest.mpd';
+        var manifest = '//video.h-cdn.com/static/dash/mako/manifest.mpd';
         var source = new shaka.player.DashVideoSource(manifest, null, estimator);
         shaka_player.load(source);
     })();
